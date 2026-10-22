@@ -1,1 +1,775 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio | IT Undergraduate</title>
+
+    <meta name="description"
+          content="Personal portfolio of an IT undergraduate showcasing skills, projects, education, and contact information.">
+
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --background: #0b1120;
+            --card: #151e32;
+            --primary: #8b5cf6;
+            --secondary: #22d3ee;
+            --text: #f1f5f9;
+            --muted: #a7b2c5;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            padding: 85px 0;
+            scroll-margin-top: 75px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+
+        .section-title span {
+            color: var(--secondary);
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 17, 32, 0.95);
+            border-bottom: 1px solid #273149;
+        }
+
+        nav {
+            min-height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .menu-button {
+            display: none;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Home Section */
+        #home {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 80% 20%,
+                rgba(139, 92, 246, 0.17),
+                transparent 35%);
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .hero-text h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            color: var(--muted);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            width: 280px;
+            height: 280px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            background: var(--card);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 6rem;
+            box-shadow: 0 0 45px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 5px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid var(--primary);
+        }
+
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--secondary);
+        }
+
+        /* About */
+        #about {
+            background: #10182a;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid #28344c;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .skill-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Projects */
+        #projects {
+            background: #10182a;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #28344c;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .project-card .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            margin: 12px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #25213e;
+            color: #c4b5fd;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin: 4px 3px 4px 0;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--secondary);
+        }
+
+        /* Education */
+        .education-card {
+            max-width: 750px;
+            margin: auto;
+            background: var(--card);
+            padding: 30px;
+            border-left: 4px solid var(--secondary);
+            border-radius: 8px;
+        }
+
+        .education-card h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .education-card p {
+            color: var(--muted);
+            margin: 8px 0;
+        }
+
+        /* Contact */
+        #contact {
+            background: #10182a;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .contact-content p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 25px;
+            text-align: center;
+            border-top: 1px solid #273149;
+            color: var(--muted);
+        }
+
+        footer span {
+            color: var(--secondary);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-button {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--card);
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                gap: 18px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-image {
+                width: 200px;
+                height: 200px;
+                font-size: 4rem;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+
+            <a href="#home" class="logo">MyPortfolio.</a>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container hero">
+
+            <div class="hero-text">
+
+                <h3>Hello, welcome to my portfolio!</h3>
+
+                <h1>I'm <span style="color:#22d3ee;">
+                    Your Name
+                </span></h1>
+
+                <h2>IT Undergraduate & Aspiring Developer</h2>
+
+                <p>
+                    I am an Information Technology undergraduate who is
+                    passionate about software development, web design,
+                    and learning new technologies. I enjoy creating
+                    useful and user-friendly digital solutions.
+                </p>
+
+                <a href="#projects" class="btn">View My Projects</a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Contact Me
+                </a>
+
+            </div>
+
+            <div class="hero-image" aria-label="Profile picture placeholder">
+                👩‍💻
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+
+            <h2 class="section-title">About <span>Me</span></h2>
+
+            <div class="about-content">
+
+                <p>
+                    I am an IT undergraduate with an interest in
+                    programming, web development, databases, and
+                    software engineering.
+                </p>
+
+                <p>
+                    Through academic assignments and personal projects,
+                    I am developing my technical knowledge, problem-solving
+                    abilities, teamwork, and communication skills.
+                </p>
+
+                <p>
+                    My goal is to become a skilled IT professional and
+                    contribute to meaningful technology projects.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+
+            <h2 class="section-title">My <span>Skills</span></h2>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <div class="icon">🌐</div>
+                    <h3>HTML & CSS</h3>
+                    <p>Building and styling web pages.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon">⚡</div>
+                    <h3>JavaScript</h3>
+                    <p>Adding interactive features to websites.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon">☕</div>
+                    <h3>Java</h3>
+                    <p>Programming fundamentals and OOP.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon">💻</div>
+                    <h3>C#</h3>
+                    <p>Windows Forms and desktop applications.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon">🗄️</div>
+                    <h3>MySQL</h3>
+                    <p>Database design and data management.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon">🛠️</div>
+                    <h3>Git & GitHub</h3>
+                    <p>Version control and project collaboration.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+
+            <h2 class="section-title">My <span>Projects</span></h2>
+
+            <div class="projects-grid">
+
+                <div class="project-card">
+
+                    <div class="project-icon">✈️</div>
+
+                    <h3>Travel Assistant System</h3>
+
+                    <p>
+                        A travel management application designed to help
+                        users explore destinations, book hotels, reserve
+                        tour guides, and manage payments.
+                    </p>
+
+                    <span class="tag">C#</span>
+                    <span class="tag">Windows Forms</span>
+                    <span class="tag">MySQL</span>
+
+                    <br>
+
+                    <a
+                        href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        View Project on GitHub →
+                    </a>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-icon">🌳</div>
+
+                    <h3>Sinharaja Eco-Tourism Website</h3>
+
+                    <p>
+                        A website that introduces visitors to the
+                        Sinharaja Rainforest, its attractions,
+                        environmental guidelines, and booking information.
+                    </p>
+
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+
+                    <br>
+
+                    <a
+                        href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        View Project on GitHub →
+                    </a>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-icon">📚</div>
+
+                    <h3>Student Management System</h3>
+
+                    <p>
+                        A desktop application concept for organising
+                        student details and managing academic records.
+                    </p>
+
+                    <span class="tag">C#</span>
+                    <span class="tag">Windows Forms</span>
+
+                    <br>
+
+                    <a
+                        href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        View Project on GitHub →
+                    </a>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-icon">🤖</div>
+
+                    <h3>Smart Health Monitoring Stick</h3>
+
+                    <p>
+                        An Arduino-based project concept designed to
+                        assist users through obstacle detection and
+                        health monitoring features.
+                    </p>
+
+                    <span class="tag">Arduino</span>
+                    <span class="tag">Electronics</span>
+                    <span class="tag">C/C++</span>
+
+                    <br>
+
+                    <a
+                        href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        View Project on GitHub →
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+
+            <h2 class="section-title">My <span>Education</span></h2>
+
+            <div class="education-card">
+
+                <h3>Information Technology Undergraduate</h3>
+
+                <p><strong>Institution:</strong>
+                    Your University Name</p>
+
+                <p><strong>Degree:</strong>
+                    Your Degree Programme</p>
+
+                <p><strong>Areas of Interest:</strong>
+                    Software Engineering, Web Development,
+                    Databases, and Information Systems</p>
+
+                <p><strong>Status:</strong> Currently Studying</p>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+
+            <h2 class="section-title">Contact <span>Me</span></h2>
+
+            <div class="contact-content">
+
+                <p>
+                    Thank you for visiting my portfolio!
+                    Feel free to contact me for project discussions,
+                    collaboration, or professional opportunities.
+                </p>
+
+                <div class="contact-links">
+
+                    <a href="mailto:YOUR-EMAIL@example.com"
+                       class="btn">
+                        📧 Email Me
+                    </a>
+
+                    <a
+                        href="https://github.com/YOUR-USERNAME"
+                        class="btn btn-outline"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        GitHub
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/"
+                        class="btn btn-outline"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        LinkedIn
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © <span id="year"></span>
+            <span>My Portfolio</span>.
+            All rights reserved.
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Automatically update the footer year
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Mobile navigation menu
+        const menuButton = document.getElementById("menuButton");
+        const navLinks = document.getElementById("navLinks");
+
+        menuButton.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+
+            const isExpanded =
+                navLinks.classList.contains("active");
+
+            menuButton.setAttribute("aria-expanded", isExpanded);
+        });
+
+        // Close the menu after clicking a navigation link
+        document.querySelectorAll(".nav-links a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
+    </script>
+
+</body>
+</html>
+```
 
